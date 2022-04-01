@@ -1,0 +1,12 @@
+! Title: papo filters – Changing certain behaviour I found wrong
+! Description: One of thin
+!              This filter file might also remove some functionality on purpose,
+!              which I don't use and find annoying. (pop-over menus, overlay buttons)
+!              Such buttons are hidden, which might disallow use.
+! Expires: 4 days
+! Last modified: %timestamp%
+! Licence: https://github.com/paponius/Macro-Files/blob/master/LICENSE
+! Homepage: https://github.com/paponius/Macro-Files
+! This file path: https://raw.githubusercontent.com/paponius/Macro-Files/master/uBlock%20filters/fix%20design.txt
+
+
