@@ -1,4 +1,4 @@
-! Title: papo filters – Changing certain behaviour I found wrong
+! Title: papo filters – Changing certain behaviour I found wrongly designed
 ! Description: One of thin
 !              This filter file might also remove some functionality on purpose,
 !              which I don't use and find annoying. (pop-over menus, overlay buttons)
@@ -8,5 +8,69 @@
 ! Licence: https://github.com/paponius/Macro-Files/blob/master/LICENSE
 ! Homepage: https://github.com/paponius/Macro-Files
 ! This file path: https://raw.githubusercontent.com/paponius/Macro-Files/master/uBlock%20filters/fix%20design.txt
+
+
+! === Video player shade and useless overlays covering video
+!     Sometimes user wants to pause a video to see a still.
+!     Some players would pop-up buttons and shade a video even on mouse hover
+
+
+! --- smotrim.ru - 2022-03-12 a player is running in an iframe: https://player.vgtrk.com
+! I only started watching these spam channels to see what citizens behind Russia info wall can see and what they might think is going on.
+
+! play/pause button is too big, shows on hover, hides after long timeout and is useless - play/pause works anywhere, not just the button
+player.vgtrk.com##.pl-vid_play.pl-vid__play-pause
+! logo is too big, shows on hover, hides after long timeout
+player.vgtrk.com##.pl-vid__logo
+! title does not say anything usefull
+player.vgtrk.com##.pl-vid__title
+
+! play button when video paused
+! keeping for now
+! player.vgtrk.com##.pl-vid_pause.pl-vid__play-pause
+
+! dark shade - overlay when hover. why?
+player.vgtrk.com##.pl-vid-overlay__inner:before
+player.vgtrk.com##.pl-vid-overlay__inner:after
+
+
+! --- pages streaming CNN
+! AD overlay - 2022-03-15
+! div id="pum-5179" class="pum pum-overlay
+www.livenewsworld.com###pum-5179
+www.livenewsworld.com##.pum
+www.livenewsworld.com##.pum-overlay
+www.livenewsmag.com###pum-5179
+www.livenewsmag.com##.pum
+www.livenewsmag.com##.pum-overlay
+! backdrop - shade when paused
+www.livenewsworld.com##.jw-controls-backdrop.jw-reset
+www.livenewsmag.com##.jw-controls-backdrop.jw-reset
+
+! 2022-03-24 https://edition.cnn.com
+! dark curtain over video
+edition.cnn.com##.sc-gzVnrw.pui.sc-kkGfuU.IAmeA:style(background-color: unset !important;)
+
+! 2022-03-17 https://www.euronews.com
+www.euronews.com##.didomi-support-full-height.didomi-popup__backdrop.didomi-notice-popup.didomi-popup-backdrop
+
+! ===
+
+
+! YouTUBE end screen suggestions
+youtube.com##.videowall-endscreen
+youtube.com##.html5-endscreen-content
+youtube.com##.html5-endscreen
+youtube.com##.ytp-ce-element
+
+! 2022-03-17 https://www.politico.eu
+www.politico.eu###sp_message_container_527577
+
+! 2022-03-17 https://ct24.ceskatelevize.cz
+! confirm box
+ct24.ceskatelevize.cz###onetrust-consent-sdk
+
+
+
 
 

@@ -37,10 +37,11 @@ I think the first is older and now the second is used, while the first still wor
 ! Licence: https://github.com/paponius/Macro-Files/blob/master/LICENSE  
 ! Homepage: https://github.com/paponius/Macro-Files  
 ! This file path: https://raw.githubusercontent.com/paponius/Macro-Files/master/uBlock%20filters/fix%20design.txt  
-  
-  
+
+
 ### All above uBlock origin scripts
 This can be inserted to uBlock > Settings > Filter lists > Import  
-https://raw.githubusercontent.com/paponius/Macro-Files/master/uBlock%20filters/my_unsorted.txt  
-https://raw.githubusercontent.com/paponius/Macro-Files/master/uBlock%20filters/fix%20design.txt  
-  
+
+    https://raw.githubusercontent.com/paponius/Macro-Files/master/uBlock%20filters/my_unsorted.txt
+    https://raw.githubusercontent.com/paponius/Macro-Files/master/uBlock%20filters/fix%20design.txt
+
