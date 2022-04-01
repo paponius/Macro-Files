@@ -1,5 +1,5 @@
 ! Title: papo filters – Changing certain behaviour I found wrongly designed
-! Description: One of thin
+! Description: e.g. backdrop and useless distracting and covering objects over video player.
 !              This filter file might also remove some functionality on purpose,
 !              which I don't use and find annoying. (pop-over menus, overlay buttons)
 !              Such buttons are hidden, which might disallow use.
@@ -63,24 +63,15 @@ www.livenewsmag.com##.jw-icon-cast:style(display: unset !important;)
 ! dark curtain over video
 edition.cnn.com##.sc-gzVnrw.pui.sc-kkGfuU.IAmeA:style(background-color: unset !important;)
 
-! 2022-03-17 https://www.euronews.com
-www.euronews.com##.didomi-support-full-height.didomi-popup__backdrop.didomi-notice-popup.didomi-popup-backdrop
-
 ! ===
 
 
-! YouTUBE end screen suggestions
+! YouTUBE end screen suggestions showing during last seconds while video still plays
 youtube.com##.videowall-endscreen
 youtube.com##.html5-endscreen-content
 youtube.com##.html5-endscreen
 youtube.com##.ytp-ce-element
 
-! 2022-03-17 https://www.politico.eu
-www.politico.eu###sp_message_container_527577
-
-! 2022-03-17 https://ct24.ceskatelevize.cz
-! confirm box
-ct24.ceskatelevize.cz###onetrust-consent-sdk
 
 
 

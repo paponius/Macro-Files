@@ -1,0 +1,25 @@
+! Title: papo filters – hide agree popup and backdrop shade filter
+! Description: Hides message boxes poping up on page open, like to agree to use cookies. Also removes backdrop.
+!              This might break a page, if page's code is updated.
+!              e.g. JS can remove scroll bars and when user does not click OK page can't be scrolled.
+!              As I also use JS blocker for some JS code, I might not know if this happens for a page when I create a filter here.
+! Expires: 4 days
+! Last modified: %timestamp%
+! Licence: https://github.com/paponius/Macro-Files/blob/master/LICENSE
+! Homepage: https://github.com/paponius/Macro-Files
+! This file path: https://raw.githubusercontent.com/paponius/Macro-Files/master/uBlock%20filters/agree.txt
+
+
+
+! 2022-03-17 https://www.euronews.com
+www.euronews.com##.didomi-support-full-height.didomi-popup__backdrop.didomi-notice-popup.didomi-popup-backdrop
+
+! 2022-03-17 https://www.politico.eu
+www.politico.eu###sp_message_container_527577
+! a nagging to sign up
+! 9/27/2018
+www.politico.com##.story-text aside.db.cl-l
+
+! 2022-03-17 https://ct24.ceskatelevize.cz
+ct24.ceskatelevize.cz###onetrust-consent-sdk
+

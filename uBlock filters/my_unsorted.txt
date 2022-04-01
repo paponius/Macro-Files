@@ -14,35 +14,40 @@
 ! (newer?) path: https://github.com/paponius/Macro-Files/raw/master/uBlock%20filters/my_unsorted.txt
 
 
-! === Comments for My Rules ===
-! stop redirection to bbc.com (moved here to static filters)
-!   www.bbc.co.uk https://www.bbc.co.uk inline-script block
+! --- My Rules tab ---
+! I have these two rules in "My rules" tab, maybe I'll rewrite them as filters and move here
+!
 ! enable mouse, description in uMatrix recipes file
 !   www.mirror.co.uk https://s2-prod.mirror.co.uk/@trinitymirrordigital/withnail/lib/captify/ script block
+!
 ! asks for Notification Permission, but might be important for something else
 !   1337x.to https://1337x.to/sw.js script block
 
-! === Notes to Filter lists ===
+! --- Comment for another filter files ---
 ! Fanboy’s Annoyance List - also blocks twitter posts
 
 
 ! =================================================================================
 ! === bad filters disabling
 ! =================================================================================
-! Notes: $badfilter sa zrejme neda pouzit na "cosmetic" (element hiding) filters
-!		element hiding filter sa da "disablovat" okopirovanim a pridanim @ medzi ##
-! hidden article picture on https://www.independent.co.uk/news/uk/home-news/chloe-ayling-kidnapping-milan-advert-images-sell-british-model-dark-web-sex-slave-a7884071.html
+! Notes: $badfilter is probably not possible to use for disabling "cosmetic" (element hiding) filters
+!        element hiding filter can be disabled by duplicating the bad filter line and adding @ between ##
+!        network filter: ||<partial URL>^$badfilter, or ||<partial URL>^$script,badfilter
+!        cosmetic filter: <partial URL>#@#<SELECTOR>
+!        ? what is this?: @@_site_cookie_$domain=<partial URL>
+
+! hidden article picture e.g. https://www.independent.co.uk/news/uk/home-news/chloe-ayling-kidnapping-milan-advert-images-sell-british-model-dark-web-sex-slave-a7884071.html
 -ad.jpg?$badfilter
 
 ! Twitter as 3rd party posts will not show
 ! solved by disabling the whole list
 ! Fanboy’s Annoyance List - Social plugins are overall disabled
 !
-! I don't think this is correct filter. badfilter probably can't be used on cosmetic filters
+! I don't think this is a correct filter. badfilter probably can't be used on cosmetic filters
 ! ##.twitter-wrap$badfilter
 ! ##a[href^="https://twitter.com/intent/tweet?"]$badfilter
 
-! to allow confirming GDPR
+! must allow confirming GDPR box, or the page won't work
 people.com#@#.gdpr:not(body):not(html)
 
 ! news.sky.com unblock video playback
@@ -252,10 +257,6 @@ memory-alpha.wikia.com##body>div>div[data-tracking-opt-in-overlay="true"]
 
 ! 8/24/2018, 8:14:13 AM https://www.limetorrents.info/-torrent-5097457.html
 www.limetorrents.info###content > table:nth-of-type(1) > tbody > tr > td:nth-of-type(2)
-
-! nag, sign up
-! 9/27/2018, 11:41:39 AM https://www.politico.com/story/2018/09/26/ex-boyfriend-filed-restraining-order-against-kavanaugh-accuser-845348
-www.politico.com##.story-text aside.db.cl-l
 
 ! 9/29/2018, 11:53:06 AM https://www.aktuality.sk/clanok/627844/sudca-v-nedelu-rozhodne-ci-obvineni-z-vrazdy-jana-kuciaka-zostanu-za-mrezami/
 www.aktuality.sk##.payment-box

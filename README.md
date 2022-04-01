@@ -1,16 +1,16 @@
 # Macro Files    
-Macro, or data files for various scripts, programs and plugins.  
-Which can be updated online.
+Macro, or data files for various scripts, programs and plugins, which can be updated online.
 
 These files are sourced directly from this repository using:  
-https://raw.githubusercontent.com/paponius/Macro-Files/master/uBlock%20filters/<FILENAME>  
+https://raw.githubusercontent.com/paponius/Macro-Files/master/uBlock%20filters/<FILENAME\>  
 or  
-https://github.com/paponius/Macro-Files/raw/master/uBlock%20filters/<FILENAME>  
+https://github.com/paponius/Macro-Files/raw/master/uBlock%20filters/<FILENAME\>  
 
-They both work and I don't know the difference between them.  
+Both schemas above work and I don't know the difference between them.  
 I think the first is older and now the second is used, while the first still works.
 
-  
+
+#### my unsorted
 ! Title: papo filters – unsorted. all sorts and countries.    
 ! Description: List started on my "My filters" tab. Now I have many browsers and I want  
 !              to keep them updated without need to use manual cloud sync.  
@@ -27,6 +27,7 @@ I think the first is older and now the second is used, while the first still wor
 ! (newer?) path: https://github.com/paponius/Macro-Files/raw/master/uBlock%20filters/my_unsorted.txt  
   
    
+#### fix design
 ! Title: papo filters – Changing certain behaviour I found wrong  
 ! Description: One of thin  
 !              This filter file might also remove some functionality on purpose,  
@@ -39,9 +40,23 @@ I think the first is older and now the second is used, while the first still wor
 ! This file path: https://raw.githubusercontent.com/paponius/Macro-Files/master/uBlock%20filters/fix%20design.txt  
 
 
+#### agree button
+! Title: papo filters – hide agree popup and backdrop shade filter
+! Description: One of thin
+!              This filter file might also remove some functionality on purpose,
+!              which I don't use and find annoying. (pop-over menus, overlay buttons)
+!              Such buttons are hidden, which might disallow use.
+! Expires: 4 days
+! Last modified: %timestamp%
+! Licence: https://github.com/paponius/Macro-Files/blob/master/LICENSE
+! Homepage: https://github.com/paponius/Macro-Files
+! This file path: https://raw.githubusercontent.com/paponius/Macro-Files/master/uBlock%20filters/agree.txt
+
+
 ### All above uBlock origin scripts
 This can be inserted to uBlock > Settings > Filter lists > Import  
 
     https://raw.githubusercontent.com/paponius/Macro-Files/master/uBlock%20filters/my_unsorted.txt
     https://raw.githubusercontent.com/paponius/Macro-Files/master/uBlock%20filters/fix%20design.txt
+    https://raw.githubusercontent.com/paponius/Macro-Files/master/uBlock%20filters/agree.txt
 
