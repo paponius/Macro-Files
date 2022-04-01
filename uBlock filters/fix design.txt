@@ -46,6 +46,18 @@ www.livenewsmag.com##.pum-overlay
 ! backdrop - shade when paused
 www.livenewsworld.com##.jw-controls-backdrop.jw-reset
 www.livenewsmag.com##.jw-controls-backdrop.jw-reset
+! hide useless buttons
+! live - it's always live, share - just share the link, settings - nothing there, just share again
+www.livenewsworld.com##.jw-text-live
+www.livenewsworld.com##.jw-settings-sharing
+www.livenewsworld.com##.jw-icon-settings
+www.livenewsmag.com##.jw-text-live
+www.livenewsmag.com##.jw-settings-sharing
+www.livenewsmag.com##.jw-icon-settings
+! enable cast, don't know if it will cast
+www.livenewsworld.com##.jw-icon-cast:style(display: unset !important;)
+www.livenewsmag.com##.jw-icon-cast:style(display: unset !important;)
+
 
 ! 2022-03-24 https://edition.cnn.com
 ! dark curtain over video

@@ -4,7 +4,7 @@ Which can be updated online.
 
 These files are sourced directly from this repository using:  
 https://raw.githubusercontent.com/paponius/Macro-Files/master/uBlock%20filters/<FILENAME>  
-or
+or  
 https://github.com/paponius/Macro-Files/raw/master/uBlock%20filters/<FILENAME>  
 
 They both work and I don't know the difference between them.  
