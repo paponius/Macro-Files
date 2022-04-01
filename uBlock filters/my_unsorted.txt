@@ -1,0 +1,361 @@
+! Title: papo unsorted filters – all sorts
+! Description: List started on my "My filters" tab. Now I have many browsers and I want
+!              to keep them updated without need to use manual cloud sync.
+!              Also to be able to add my list to friend's browser.
+!              This unsorted list is maybe not suitable for generic public,
+!              as it might break some functionality which I don't use on purpose.
+!              I will slowly, maybe years, move parts from this file to separate
+!              filter files based on a type and country.
+! Expires: 4 days
+! Last modified: %timestamp%
+! Licence: https://github.com/paponius/Macro-Files/blob/master/LICENSE
+! Homepage: https://github.com/paponius/Macro-Files
+! This file path: https://raw.githubusercontent.com/paponius/Macro-Files/master/uBlock%20filters/my_unsorted.txt
+
+
+! === Comments for My Rules ===
+! stop redirection to bbc.com (moved here to static filters)
+!   www.bbc.co.uk https://www.bbc.co.uk inline-script block
+! enable mouse, description in uMatrix recipes file
+!   www.mirror.co.uk https://s2-prod.mirror.co.uk/@trinitymirrordigital/withnail/lib/captify/ script block
+! asks for Notification Permission, but might be important for something else
+!   1337x.to https://1337x.to/sw.js script block
+
+! === Notes to Filter lists ===
+! Fanboy’s Annoyance List - also blocks twitter posts
+
+
+! =================================================================================
+! === bad filters disabling
+! =================================================================================
+! Notes: $badfilter sa zrejme neda pouzit na "cosmetic" (element hiding) filters
+!		element hiding filter sa da "disablovat" okopirovanim a pridanim @ medzi ##
+! hidden article picture on https://www.independent.co.uk/news/uk/home-news/chloe-ayling-kidnapping-milan-advert-images-sell-british-model-dark-web-sex-slave-a7884071.html
+-ad.jpg?$badfilter
+
+! Twitter as 3rd party posts will not show
+! solved by disabling the whole list
+! Fanboy’s Annoyance List - Social plugins are overall disabled
+!
+! I don't think this is correct filter. badfilter probably can't be used on cosmetic filters
+! ##.twitter-wrap$badfilter
+! ##a[href^="https://twitter.com/intent/tweet?"]$badfilter
+
+! to allow confirming GDPR
+people.com#@#.gdpr:not(body):not(html)
+
+! news.sky.com unblock video playback
+@@_site_cookie_$domain=news.sky.com
+
+! video does not play on cbsnews.com 2018-09
+! blocked by filter: ||c.evidon.com^ found in: Peter Lowe’s Ad and tracking server list
+! can stay blocked:
+!	https://c.evidon.com/sitenotice/evidon-banner.js
+!		also blocked by: /evidon-banner. found in: Fanboy’s Cookiemonster List
+!	https://c.evidon.com/sitenotice/425/translations/en.js
+!
+! must unblock: https://c.evidon.com/sitenotice/425/cbsnews/settings.js
+!	https://c.evidon.com/sitenotice/425/snthemes.js
+!	https://c.evidon.com/sitenotice/evidon-sitenotice-tag.js
+!
+||c.evidon.com^$badfilter
+
+! a graph on https://www.independent.co.uk/news/world/americas/us-politics/mueller-investigation-live-update-today-trump-james-comey-russia-paul-manafort-michael-cohen-flynn-a8672731.html
+||3p.ampproject.net^$script,badfilter
+
+! eBay to show sponsored items carousels on Item View page
+ebay.com#@#.mfe-lex:has(h2:has-text(sponsored))
+! More from this seller
+ebay.com#@##merch_html_100010
+
+
+! =================================================================================
+! ===  Cookies
+! =================================================================================
+
+! asi to bolo GDPR info, uz nie je
+! 5/8/2018, 6:56:32 PM https://superuser.com/questions/1003201/how-do-i-stop-mozilla-telemetry/1003208
+! superuser.com###overlay-header
+
+! 7/27/2018, 5:00:09 AM https://www.quora.com/Why-are-three-engine-aircraft-rarely-seen
+! not present anymore: www.quora.com##.condensed_ad_experiment
+! already in both Adguard and Fanboy
+!www.quora.com##.CookieBanner
+
+! 7/27/2018
+! already in both Adguard and Fanboy
+!stackexchange.com###js-gdpr-consent-banner
+!stackoverflow.com###js-gdpr-consent-banner
+!superuser.com###js-gdpr-consent-banner
+!serverfault.com###js-gdpr-consent-banner
+
+! cnn.com
+! already in both Adguard and Fanboy as cnn.com##.user-msg
+!cnn.com##.user-msg-flexbox.headerless.user-msg
+
+! neviem ci stale, mal som to v Stylus, 2018-09 preniesol sem
+www.gpspower.net###cookieControlWrapper
+
+
+! =================================================================================
+! === fix
+! =================================================================================
+
+! disable anti adblock. logo.png is html page, shows as script in logger
+! 7/19/2018, 4:54:32 AM idnes.cz
+! ||1gr.cz/js/uni/oldback/logo.png$script,domain=idnes.cz
+||1gr.cz/js/uni/oldback/logo.png$script
+
+! --- BBC.co.uk - block redirection to .com
+! Only the index page redirects. The redirecting script is inline. It does load some other JS,
+!   or do other stuff, blocking inline scripts will disable some functionality.
+! 7/16/2018, 10:17:01 PM bbc.co.uk
+|https://www.bbc.co.uk/|$inline-script
+
+
+! 11/23/2019 firefox addons page viewed from archive.org
+! Problem: page refreshes from current version. Not showing archived but actual.
+||web.archive.org^web/*js_/https://addons-amo.cdn.mozilla.net/amo-*.js$script,domain=web.archive.org
+
+! =================================================================================
+! ===  Annoyance
+! =================================================================================
+
+! 7/26/2018, 12:45:49 AM https://www.cnbc.com/2018/07/25/qualcomm-is-preparing-to-give-up-on-nxp.html
+www.cnbc.com###social-tools-panel
+
+! "Welcome back" banner
+! 7/27/2018
+stackexchange.com###overlay-header
+stackoverflow.com###overlay-header
+superuser.com###overlay-header
+serverfault.com###overlay-header
+
+! side bar overlay - site feedback (slides in after a minute)
+! 8/1/2018 prenesene zo Stylish
+support.microsoft.com###smc-survey-external-feedback-button
+! try the virual agent - has this in Stylish, can't see it on site now
+!support.microsoft.com###skylight-entry-chrome
+
+linuxquestions.org###navbar_notice_1
+linuxquestions.org###navbar_notice_18
+linuxquestions.org###navbar_notice_18 + div::before:style(content: "Useless huge Notice on top of each forum page - hidden in uBlock";)
+
+! =================================================================================
+! ===  ADs
+! =================================================================================
+
+! AD is removed but empty space remains on top of site
+! 7/19/2018, 4:42:21 AM https://www.idnes.cz/
+idnes.cz###main rale
+
+! ADs masquerading inside the article
+! 5/25/2018, 11:21:07 PM https://4sysops.com/archives/using-multiple-module-versions-in-powershell-5/
+4sysops.com##div[id^=div-test-]
+
+! --- IMDb
+! big IMDb promo in center stream - Comic-Con 2018 alebo Casting Calls,
+! also a commercial - get premium... small block at a bottom of main column
+! will keep similar content in the sidebar - right column. It is also in .ab_ninja, in: #sidebar > .mini-article
+www.imdb.com##.article > .ab_widget > .ab_ninja
+! 2019-11 the whole .ab_widget can not be blocked, some pages has all usefull content in it.
+! Blocking only child, .ab_ninja, will leave a tiny empty bar.
+! 7/24/2018, 5:25:34 PM block on: https://www.imdb.com/name/nm1024677/?ref_=tt_cl_t4
+! don't block on: https://www.imdb.com/whats-on-tv/tv-sci-fi-comedies/ls020422663/?ref_=ls_mv_close
+! block: html body#styleguide-v2.fixed div#wrapper div#root.redesign div#pagecontent.pagecontent div#content-2-wide.redesign div#maindetails_center_bottom.maindetails_center div.article span.ab_widget div.ab_ninja
+! don't: html body#styleguide-v2.fixed div#wrapper div#root.redesign div#pagecontent div.pagecontent div#content-2-wide div#main div.article span.ab_widget
+
+! narrow banner, get premium trial
+! 7/24/2018, 4:45:18 PM https://www.imdb.com/title/tt4160708/?ref_=cs_ov_tt
+www.imdb.com###main_top .article.native-ad-promoted-provider
+
+! banner on some last pages of image album viewser
+! 9/27/2018, 12:19:18 AM https://www.imdb.com/name/nm0000854/mediaviewer/rm3029571584
+www.imdb.com###mediaviewer-banner > a[href^="/offsite/?page-action=offsite-mptvimages"] > img#banner-image
+
+
+! in-article with masked class name and ID
+! use Stylish/us with background color to test/debug
+! 7/31/2018, 7:28:28 PM
+! 2019-03 vypinam - Quora prestla ukazovat clanky, otvori sa prazdna stranka iba s header
+
+! www.quora.com##.layout_2col_main > div:not(.header):not(.answer_text_small):not(.fixable_clone):not(.w4_5):not(.BelowQuestionAddPrompt) > div:not(.prompts_list):not(#answer_wiki):not(.QuestionPageAnswerHeader):not(.logged_out_related_questions_container)
+
+
+! 10/4/2018, 7:34:31 AM https://www.quora.com/How-do-I-understand-which-Windows-is-genuine-or-crack
+www.quora.com##div.layout_2col_main > div.answer_text_small div.pagedlist_item > div:not([class]):not([id])
+
+
+! ================================  UK News Sites  ================================
+
+! --- BBC
+
+! other rule covers this
+!www.bbc.com###bbccookies
+
+! --- Daily Mail - Mail Online [papo]
+
+! banner above the title of the article
+! 5/29/2018, 3:44:50 AM http://www.dailymail.co.uk/femail/article-5779081/Kate-Middleton-looks-stylish-Zara-dress-Houghton-horse-trials.html
+||i.dailymail.co.uk/i/furniture/fff/fff-hub-banner-wide.png$image
+!or: www.dailymail.co.uk##.fff-banners
+
+! Facebook like button - top left corner, whole site - wide
+! 5/29/2018, 3:45:10 AM http://www.dailymail.co.uk/femail/article-5779081/Kate-Middleton-looks-stylish-Zara-dress-Houghton-horse-trials.html
+||i.dailymail.co.uk/i/furniture/facebook/DailyMail/DailyMail.png$image
+
+! in mobile view - removed Ad "install App" on top left empty space
+dailymail.co.uk##.smart-banner .scrollable-content:style(margin-top: unset !important)
+
+
+! ================================  US News Sites  ================================
+
+! 8/1/2018, 11:11:47 PM https://www.washingtonpost.com/blogs/plum-line/wp/2018/08/01/trumps-impotence-on-the-mueller-investigation-is-driving-him-batty/?utm_term=.c793eed1d1f7
+www.washingtonpost.com##.top-sharebar-wrapper
+! or
+www.washingtonpost.com##.vertical-sticky-top-sharebar
+
+! subscribe nagger
+! 9/22/2018, 10:52:00 AM https://www.washingtonpost.com/opinions/call-her-by-her-name-christine-blasey-ford/2018/09/21/77f3963a-bdd0-11e8-be70-52bd11fe18af_story.html?utm_term=.5da48deceeb9
+www.washingtonpost.com###i_userMessages
+
+! subscribe button
+! 9/22/2018, 10:55:59 AM https://www.washingtonpost.com/opinions/call-her-by-her-name-christine-blasey-ford/2018/09/21/77f3963a-bdd0-11e8-be70-52bd11fe18af_story.html?utm_term=.ad2a06811acf
+www.washingtonpost.com###nav-subscribe
+
+
+! =======================================  NEW  =======================================
+
+! 8/7/2018, 10:49:17 PM https://www.bloomberg.com/news/articles/2018-08-05/with-sanctions-clock-ticking-iran-races-to-reap-deal-benefits
+www.bloomberg.com###paywall-banner
+
+! 8/9/2018, 9:39:59 PM https://www.bloomberg.com/news/articles/2018-07-26/russia-face-recognition-tool-thwarted-by-punk-band-pussy-riot
+www.bloomberg.com##body > .leaderboard-container
+
+! 8/11/2018, 3:44:46 AM https://www.cnet.com/products/acer-aspire-one/specs/
+www.cnet.com##.ad-leader-top
+
+! paused video annoyance
+! 8/15/2018, 9:44:04 PM http://www.dailymail.co.uk/news/article-6058999/Thousands-wildebeest-stampede-river-infested-crocodiles-Kenya.html
+www.dailymail.co.uk##.mol-related-videos-view-paused
+
+! 8/19/2018, 12:29:40 AM https://nypost.com/2018/08/18/putin-dances-with-austrian-foreign-minister-at-her-wedding/#
+nypost.com###maropost-signup-primary
+
+! 8/19/2018, 11:48:38 PM https://dennikn.sk/521950/kto-riadi-prorusky-web-hlavne-spravy-muz-ktory-neodmieta-ani-eurofondy-2/
+dennikn.sk##.e_follow_splash
+
+! accept cookies
+! 8/21/2018, 9:05:11 AM http://memory-alpha.wikia.com/wiki/File:James_R_Kirk_tombstone.jpg
+memory-alpha.wikia.com##body>div>div[data-tracking-opt-in-overlay="true"]
+
+! 8/24/2018, 8:14:13 AM https://www.limetorrents.info/-torrent-5097457.html
+www.limetorrents.info###content > table:nth-of-type(1) > tbody > tr > td:nth-of-type(2)
+
+! nag, sign up
+! 9/27/2018, 11:41:39 AM https://www.politico.com/story/2018/09/26/ex-boyfriend-filed-restraining-order-against-kavanaugh-accuser-845348
+www.politico.com##.story-text aside.db.cl-l
+
+! 9/29/2018, 11:53:06 AM https://www.aktuality.sk/clanok/627844/sudca-v-nedelu-rozhodne-ci-obvineni-z-vrazdy-jana-kuciaka-zostanu-za-mrezami/
+www.aktuality.sk##.payment-box
+
+! give email overlay nagger
+! 10/3/2018, 6:05:55 AM https://www.howtogeek.com/272201/all-the-ways-you-can-still-get-windows-10-for-free/
+www.howtogeek.com##.email-overlay, .overlay-wrapper
+
+! 11/28/2018, 7:21:22 AM https://www.qnap.com/en/business_solutions/con_show.php?op=showone&cid=8
+||www.qnap.com/assets/img/live-room-icon.svg?v=1$image
+
+! 11/28/2018, 7:21:34 AM https://www.qnap.com/en/business_solutions/con_show.php?op=showone&cid=8
+www.qnap.com##.product_ask_wrap
+
+! 11/28/2018, 7:22:44 AM https://www.qnap.com/en/business_solutions/con_show.php?op=showone&cid=8
+www.qnap.com##.tech_note_wrap
+
+! 12/3/2018, 8:54:47 PM https://www.imdb.com/title/tt2345759/?ref_=fn_al_tt_1
+www.imdb.com##.front-row-inner
+
+! 12/3/2018, 8:55:00 PM https://www.imdb.com/title/tt2345759/?ref_=fn_al_tt_1
+www.imdb.com##.front-row-container
+
+! 12/17/2018, 8:00:18 PM https://www.dailymail.co.uk/news/article-6488137/Judge-hand-sentence-Michael-Cohen-lying-campaign-finance-bank-violations.html
+www.dailymail.co.uk##.floating-no-ads.has-button-share.floating-buttons
+
+! 11/21/2019 https://www.instructables.com
+www.instructables.com###teacher-notes
+
+! 2020-11-18 https://app.box.com
+app.box.com##.overlay
+
+! 2020-11-28 https://www.willhaben.at
+www.willhaben.at###apn-leaderboard
+
+! 2020-12-02 https://auto.bazar.sk
+auto.bazar.sk##.premium-adverts
+
+! 2020-12-03 https://www.electricaltechnology.org
+www.electricaltechnology.org##.is-fixed-popup.tie-popup
+
+! 2021-02-12 https://www.theverge.com
+www.theverge.com##.m-privacy-consent
+www.theverge.com##.tab-bar-fixed.c-tab-bar
+
+! 2021-04-16 https://www.imeteo.sk
+! by papo, funkcne
+! odstranenie blokovania zobrazenia stranky - meteo otravuje ze s adblokom nejde
+www.imeteo.sk##.swal2-backdrop-show.swal2-center.swal2-container
+www.imeteo.sk##html.blur-content .page-container__wrapper:style(filter: unset !important)
+www.imeteo.sk##body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown):style(overflow: unset !important)
+
+! 2021-06-04 https://www.imdb.com
+www.imdb.com##.image > [href^="/imdbpicks/lgbtq-power-couples/rg3163593472/mediaviewer/rm3274547201"]
+
+! 2021-06-05 https://www.4ka.sk
+||chatbot.4ka.sk/chat/$subdocument
+www.4ka.sk###botmedia-chat-widget
+
+! 2021-06-18 https://drive.google.com
+drive.google.com##.g-Yd-Na.g-Yd-Ya.a-Ff-B.a-la-B.g-Yd
+drive.google.com##.Fq82mf
+drive.google.com##.paynGb.uJtSke.xFWpbf.P62QJc.PDpWxe.OLiIxf.Rj2Mlf.VfPpkd-d-Qu-dgl2Hf.VfPpkd-d-Qu-INsAgc.VfPpkd-d
+drive.google.com##.clyeee.g6sEEc
+drive.google.com##.a-la-B-x
+drive.google.com##.Fq82mf
+drive.google.com##.clyeee.g6sEEc
+
+! 2021-06-18 https://ficek.sk
+ficek.sk##.dontShow.chb-box
+ficek.sk##.sideQuestionButton
+
+! 2021-09-25 https://www.theverge.com
+www.theverge.com##.m-privacy-consent
+www.theverge.com##.m-privacy-consent
+
+! 2021-11-13 https://www.imdb.com, player on artist page shows error message. probably wanted to autostart and was stopped by something. it's in an iframe
+www.imdb.com##div#imdbnext-vp-jw.jwplayer.jw-reset.jw-state-error.jw-stretch-fill.jw-flag-controls-hidden.jw-breakpoint-2 div.jw-error-msg.jw-info-overlay.jw-reset
+
+! 2022-01-02 https://www.digikey.com
+www.digikey.com##.visible.dk-site__mask
+www.digikey.com##.visible.dk-modal.domain-suggest
+
+! 2022-01-27 https://community.netgear.com
+community.netgear.com##.ui-widget-overlay
+community.netgear.com##.lia-in.lia-dialog-titleless.lia-panel-dialog-modal-valuesurvey.lia-panel-dialog-modal-simple.lia-panel-dialog.lia-content.ui-corner-all.ui-widget-content.ui-widget.ui-dialog
+community.netgear.com##.lia-quilt-column-alley-single.lia-quilt-column-alley > [href^="https://www.netgear.com/home/wifi/mesh/rbke963/"]
+
+! 2022-03-11 https://www.standard.co.uk
+||cmpv2.standard.co.uk/index.html?message_id=562059&consentUUID=217a0407-e1e3-49bc-b855-03acac0cc86d&request$subdocument
+
+! 2022-03-21 https://audi-a1.autobazar.sk
+audi-a1.autobazar.sk###sp_message_container_624616
+
+! 2022-03-21 https://www.autobazar.sk
+www.autobazar.sk###sp_message_container_624616
+
+! 2022-03-21 https://bmw-x3.autobazar.sk
+bmw-x3.autobazar.sk###sp_message_container_624616
+
+! 2022-03-21 https://auto.bazar.sk
+||privacy.bazar.sk/index.html?message_id=598111&consentUUID=1fd23753-ae7d-48a5-a88e-42a9b52955f0&requestUUID=4a353df1-4219-41e3-b2fc-4e1a9a68efd6&preload_message=true$subdocument
+auto.bazar.sk###sp_message_container_598111
+
