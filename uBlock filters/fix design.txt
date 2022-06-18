@@ -34,6 +34,21 @@ player.vgtrk.com##.pl-vid-overlay__inner:before
 player.vgtrk.com##.pl-vid-overlay__inner:after
 
 
+! --- www.1tv.ru - 2022-06-18 
+! New player control has too narrow seeker, remove useless button
+! without class: not-active
+static.1tv.ru##.eump-control-live1tv-now.eump-v-wrap.eump-branded-hover-active
+
+! 2022-04-13 https://static.1tv.ru
+! enabling this exception will allow resolution change to HD, but maybe allows some ads
+!! @@||yandex.ru/ads/adfox/*$xhr,domain=static.1tv.ru
+
+
+! 2022-04-15 https://www.1tv.ru
+! smaller video in no-fullscreen mode, but will be wholy visible
+!! www.1tv.ru##.container:style(width: 1000px !important;)
+
+
 ! --- pages streaming CNN
 ! AD overlay - 2022-03-15
 ! div id="pum-5179" class="pum pum-overlay
